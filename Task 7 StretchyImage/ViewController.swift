@@ -51,7 +51,7 @@ final class ViewController: UIViewController, UIScrollViewDelegate {
       headerViewTopConstraint!,
       headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       headerView.trailingAnchor.constraint(equalTo:view.trailingAnchor),
-      headerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+      headerView.widthAnchor.constraint(equalTo: view.widthAnchor),
       headerViewHeightConstraint!,
 
       scrollView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
@@ -68,25 +68,25 @@ final class ViewController: UIViewController, UIScrollViewDelegate {
 
     let current = headerViewHeightConstraint!.constant
 
-    if swipingDown {
+    if swipingDown, scrollView.isDragging, scrollView.isTracking {
       headerViewHeightConstraint?.constant =  min(current + (-offsetY), headerViewMaxHeight)
     }
 
     if swipingUp {
       headerViewTopConstraint?.constant = -min(offsetY, headerViewMinHeight)
+      headerViewHeightConstraint?.constant = headerViewMinHeight
     }
   }
 
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-      let isExpanded = headerViewHeightConstraint!.constant > headerViewMinHeight
+    let isExpanded = headerViewHeightConstraint!.constant > headerViewMinHeight
 
-      if isExpanded {
-        UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseOut], animations: {
-          self.headerViewHeightConstraint?.constant = self.headerViewMinHeight
-          self.headerViewTopConstraint?.constant = 0
-        }, completion: nil)
-      }
+    if isExpanded {
+      UIView.animate(withDuration: 1, delay: 0, options: [.curveEaseOut], animations: {
+        self.headerViewHeightConstraint?.constant = self.headerViewMinHeight
+        self.headerViewTopConstraint?.constant = 0
+        self.view.layoutIfNeeded()
+      }, completion: nil)
     }
+  }
 }
-
-
