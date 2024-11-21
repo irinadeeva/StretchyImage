@@ -10,22 +10,9 @@
 		BE33FABB2CEE05ED00C76300 /* Task 7 StretchyImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task 7 StretchyImage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BE33FACD2CEE05EF00C76300 /* Exceptions for "Task 7 StretchyImage" folder in "Task 7 StretchyImage" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = BE33FABA2CEE05ED00C76300 /* Task 7 StretchyImage */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BE33FABD2CEE05ED00C76300 /* Task 7 StretchyImage */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				BE33FACD2CEE05EF00C76300 /* Exceptions for "Task 7 StretchyImage" folder in "Task 7 StretchyImage" target */,
-			);
 			path = "Task 7 StretchyImage";
 			sourceTree = "<group>";
 		};
