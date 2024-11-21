@@ -18,7 +18,7 @@ final class ViewController: UIViewController, UIScrollViewDelegate {
   let headerView: UIImageView = {
     let view = UIImageView()
     view.image = UIImage(named: "DogImage")
-    view.contentMode = .scaleAspectFill
+    view.contentMode = .scaleToFill
     view.clipsToBounds = true
     return view
   }()
@@ -69,13 +69,11 @@ final class ViewController: UIViewController, UIScrollViewDelegate {
     let current = headerViewHeightConstraint!.constant
 
     if swipingDown {
-      headerViewTopConstraint?.constant = offsetY
-      headerViewHeightConstraint?.constant =  min(current - offsetY, headerViewMaxHeight)
+      headerViewHeightConstraint?.constant =  min(current + (-offsetY), headerViewMaxHeight)
     }
 
     if swipingUp {
       headerViewTopConstraint?.constant = -min(offsetY, headerViewMinHeight)
-      headerViewHeightConstraint?.constant = headerViewMinHeight
     }
   }
 
